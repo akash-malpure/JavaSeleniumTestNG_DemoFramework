@@ -1,9 +1,12 @@
 package com.intetbanking.testCases;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+
 
 public class TestCaseSetup {
 
@@ -12,6 +15,7 @@ public class TestCaseSetup {
 	String username = "mngr326123";
 	String password = "qegagyg";
 	static WebDriver driver;
+	public static Logger logger;
 
 	// 	This method will execute before execution of test methods within current class
 	@BeforeClass
@@ -21,6 +25,9 @@ public class TestCaseSetup {
 				"\\Drivers\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
+		
+		logger = Logger.getLogger("internetBanking");
+		PropertyConfigurator.configure("Log4j.properties");
 	}
 
 	// 	This method will execute after execution of test methods within current class	
