@@ -6,4 +6,13 @@
       <class name="com.intetbanking.testCases.TC_001_Login"/>
     </classes>
   </test> <!-- Default test -->
+  <test name="Default test(failed)">
+    <classes>
+      <class name="com.intetbanking.testCases.TC_001_Login">
+        <methods>
+          <include name="testLogin"/>
+        </methods>
+      </class> <!-- com.intetbanking.testCases.TC_001_Login -->
+    </classes>
+  </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

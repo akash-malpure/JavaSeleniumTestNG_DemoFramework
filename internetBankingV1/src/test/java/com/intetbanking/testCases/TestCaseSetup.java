@@ -4,30 +4,57 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
+
+import com.intetbanking.utils.ReadConfig;
 
 
-public class TestCaseSetup {
+public class TestCaseSetup{
 
-	// Pre-defined variables mandatory for execution of every test case	
-	String BaseURL = "http://demo.guru99.com/v4/index.php";
-	String username = "mngr326123";
-	String password = "qegagyg";
+	ReadConfig readconfig = new ReadConfig();
+	
+	// Fetching data from config.properties file via ReadConfig Class
+	String BaseURL = readconfig.getApplicationURL();
+	String username = readconfig.getUsername();
+	String password = readconfig.getPassword();
 	static WebDriver driver;
 	public static Logger logger;
 
 	// 	This method will execute before execution of test methods within current class
+	@Parameters("browser")
 	@BeforeClass
-	public void initialize() {
+	public void initialize(String browser) {
 
-		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+
-				"\\Drivers\\chromedriver.exe");
-		driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		
 		logger = Logger.getLogger("internetBanking");
 		PropertyConfigurator.configure("Log4j.properties");
+
+		if(browser.equalsIgnoreCase("chrome"))
+		{
+			System.setProperty("webdriver.chrome.driver", readconfig.getChromePath());
+			driver = new ChromeDriver();
+		}
+		
+		else if(browser.equalsIgnoreCase("firefox")) {
+			System.setProperty("webdriver.gecko.driver", readconfig.getFirefoxPath());
+			driver = new FirefoxDriver();
+		}
+		
+		else if(browser.equalsIgnoreCase("ie")) {
+			System.setProperty("webdriver.ie.driver", readconfig.getIEPath());
+				
+			@SuppressWarnings("static-access")
+			DesiredCapabilities caps = new DesiredCapabilities().internetExplorer();
+			caps.setCapability("ignoreZoomSetting", true);
+			
+			driver = new InternetExplorerDriver(caps);
+		
+		}
+		driver.manage().window().maximize();
 	}
 
 	// 	This method will execute after execution of test methods within current class	
