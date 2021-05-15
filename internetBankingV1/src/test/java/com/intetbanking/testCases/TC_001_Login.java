@@ -1,5 +1,7 @@
 package com.intetbanking.testCases;
 
+import java.io.IOException;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -9,7 +11,7 @@ public class TC_001_Login extends TestCaseSetup{
 
     // This method will attempt to login into the system & verify the page title	
 	@Test
-	public void testLogin() {
+	public void testLogin() throws IOException {
 		
 		driver.get(BaseURL);
 		
@@ -30,6 +32,7 @@ public class TC_001_Login extends TestCaseSetup{
 			logger.info("test case passed");
 		}
 		else {
+			captureScreenshot(driver,"testLogin");
 			Assert.assertTrue(false);
 			logger.info("test case failed");
 		}
