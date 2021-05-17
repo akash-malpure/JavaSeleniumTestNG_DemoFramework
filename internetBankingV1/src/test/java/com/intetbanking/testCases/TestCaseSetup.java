@@ -2,6 +2,7 @@ package com.intetbanking.testCases;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
@@ -60,6 +61,7 @@ public class TestCaseSetup{
 			driver = new InternetExplorerDriver(caps);
 		
 		}
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 	}
 

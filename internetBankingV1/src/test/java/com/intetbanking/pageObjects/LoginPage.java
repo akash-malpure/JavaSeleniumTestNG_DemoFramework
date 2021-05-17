@@ -28,6 +28,10 @@ public class LoginPage {
 	// Searching for WebElement : Login Button
 	@FindBy(name="btnLogin")
 	WebElement loginButton;
+	
+	// Searching for WebElement : Logout Button
+	@FindBy(xpath="//a[text()='Log out']")
+	WebElement logout;
 
 	// Creating method to enter text in username input field
 	public void setUsername(String uname) {
@@ -44,7 +48,11 @@ public class LoginPage {
 	// Creating method to click on login button
 	public void clickLogin() {
 		loginButton.click();
-
+	}
+	
+	// Creating method to click on login button
+	public void clickLogout() {
+		logout.click();
 	}
 	
 }

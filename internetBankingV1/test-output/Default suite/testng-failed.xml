@@ -3,16 +3,16 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test name="Default test" verbose="2">
     <classes>
-      <class name="com.intetbanking.testCases.TC_001_Login"/>
+      <class name="com.intetbanking.testCases.TC_002_DDT_Login"/>
     </classes>
   </test> <!-- Default test -->
   <test name="Default test(failed)">
     <classes>
-      <class name="com.intetbanking.testCases.TC_001_Login">
+      <class name="com.intetbanking.testCases.TC_002_DDT_Login">
         <methods>
-          <include name="testLogin"/>
+          <include name="DDT_login"/>
         </methods>
-      </class> <!-- com.intetbanking.testCases.TC_001_Login -->
+      </class> <!-- com.intetbanking.testCases.TC_002_DDT_Login -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

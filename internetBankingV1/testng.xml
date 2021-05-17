@@ -12,7 +12,8 @@
 		<parameter name="browser" value="chrome" />
 
 		<classes>
-			<class name="com.intetbanking.testCases.TC_001_Login" />
+			<!--<class name="com.intetbanking.testCases.TC_001_Login" />-->
+			<class name="com.intetbanking.testCases.TC_002_DDT_Login" />
 		</classes>
 
 	</test>
