@@ -14,6 +14,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -30,9 +31,11 @@ public class TestCaseSetup{
 	String username = readconfig.getUsername();
 	String password = readconfig.getPassword();
 	static WebDriver driver;
+	static WebDriverWait wait;
 	public static Logger logger;
 
 	// 	This method will execute before execution of test methods within current class
+	@SuppressWarnings("deprecation")
 	@Parameters("browser")
 	@BeforeClass
 	public void initialize(String browser) {
@@ -62,7 +65,8 @@ public class TestCaseSetup{
 		
 		}
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		driver.manage().window().maximize();
+		wait = new WebDriverWait(driver, 20);
+		driver.manage().window().maximize();	
 	}
 
 	// 	This method will execute after execution of test methods within current class	

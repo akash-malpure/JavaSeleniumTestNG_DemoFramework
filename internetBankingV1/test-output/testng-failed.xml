@@ -8,19 +8,8 @@
   <test name="internet Banking test">
     <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="com.intetbanking.testCases.TC_002_DDT_Login"/>
+      <class name="com.intetbanking.testCases.TC_001_Login"/>
+      <class name="com.intetbanking.testCases.TC_003_AddCustomerTest"/>
     </classes>
   </test> <!-- internet Banking test -->
-  <test parallel="none" name="internet Banking test(failed)">
-    <parameter name="browser" value="chrome"/>
-    <classes>
-      <class name="com.intetbanking.testCases.TC_002_DDT_Login">
-        <methods>
-          <include name="initialize"/>
-          <include name="tearDown"/>
-          <include name="DDT_login" invocation-numbers="1 3"/>
-        </methods>
-      </class> <!-- com.intetbanking.testCases.TC_002_DDT_Login -->
-    </classes>
-  </test> <!-- internet Banking test(failed) -->
 </suite> <!-- Failed suite [internet banking test app] -->
